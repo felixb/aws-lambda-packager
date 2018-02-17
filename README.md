@@ -8,8 +8,8 @@ Run the container like this to create a zip file for uploading to AWS lambda:
 
 ```bash
 docker run \
-    -u "${EUID}" \
-    -v ${PWD}:/workdir \
+    -u "${EUID}" \       # <-- this makes sure the resulting zip file is owned by you (and not by root)
+    -v ${PWD}:/workdir \ # <-- this mounts your aws credentials inside the container's home dir
     felixb/aws-lambda-packager
 ```
 
