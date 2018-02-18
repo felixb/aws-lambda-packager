@@ -13,6 +13,18 @@ docker run \
     felixb/aws-lambda-packager
 ```
 
+You might want to add the following function to your `.bashrc` or similar to allow even easier usage:
+
+```bash
+function package_python_lambda() {
+    docker run \
+        --rm \
+        -u "${EUID}" \
+        -v ${PWD}:/workdir \
+        felixb/aws-lambda-packager
+}
+```
+
 ## Configuration
 
 Set `LAMBDA_NAME` environment variable to configure your output file name like this:
@@ -25,4 +37,4 @@ docker run -e LAMBDA_NAME=some-lambda ...
 
 * Your python code is located in your current working directory
 * There is a requirements.txt file in your current working directory
- 
+
